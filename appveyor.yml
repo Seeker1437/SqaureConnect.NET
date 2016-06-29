@@ -3,6 +3,8 @@ branches:
   only:
   - master
 configuration: Release
+before_build:
+  - nuget restore
 build:
   project: SquareConnect.sln
   verbosity: minimal
