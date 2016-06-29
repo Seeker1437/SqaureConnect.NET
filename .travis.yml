@@ -4,3 +4,6 @@ solution: SquareConnect.sln
 branches:
   only:
     - master
+install:
+  - nuget # lets get version number
+  - nuget restore SquareConnect.sln -Verbosity detailed
