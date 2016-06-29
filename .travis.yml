@@ -1,0 +1,6 @@
+language: csharp
+mono: 3.8.0
+solution: SquareConnect.sln
+branches:
+  only:
+    - master
