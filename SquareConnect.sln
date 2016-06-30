@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareConnect", "SquareConnect\SquareConnect.csproj", "{832DA4DA-1B96-42B6-A570-BEB25DAC8943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqaureConnect.Tests", "SqaureConnect.Tests\SqaureConnect.Tests.csproj", "{770D6EDA-CE58-47C8-BBA6-AE978AE47932}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareConnect.Tests", "SquareConnect.Tests\SquareConnect.Tests.csproj", "{770D6EDA-CE58-47C8-BBA6-AE978AE47932}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareConnectTestApplication", "SquareConnectTestApplication\SquareConnectTestApplication.csproj", "{B0CF76D6-555B-420D-AD83-84E867FE2D4B}"
 EndProject
