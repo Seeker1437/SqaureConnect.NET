@@ -5,7 +5,7 @@ namespace SquareConnect.V1.Enums
     /// <summary>
     /// Indicates whether a merchant account is a single-location account or a business account.
     /// </summary>
-    public enum MerchatAccountType
+    public enum MerchantAccountType
     {
         /// <summary>
         /// The account is a business account.
