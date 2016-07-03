@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -13,13 +15,13 @@ namespace SquareConnect.V1.Types
         [JsonProperty("id")]
         public string Id;
 
-        /// <summary>
-        /// The type of action performed on the timecard, such as CLOCKIN or API_CREATE.
-        /// </summary>
         [JsonProperty("event_type")]
         internal string _eventType;
 
-        public
+        /// <summary>
+        /// The type of action performed on the timecard, such as CLOCKIN or API_CREATE.
+        /// </summary>
+        public TimecardEventType EventType => ObjectHelper.GetEnumFromDescription<TimecardEventType>(_eventType);
 
         /// <summary>
         /// The time the employee clocked in
