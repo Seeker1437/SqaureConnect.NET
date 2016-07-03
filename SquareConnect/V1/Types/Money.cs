@@ -9,7 +9,12 @@ namespace SquareConnect.V1.Types
     /// </summary>
     public class Money
     {
-        public Money(int amount, string currencyCode = "USD")
+        /// <summary>
+        /// Creates a new money object
+        /// </summary>
+        /// <param name="amount"></param>
+        /// <param name="currencyCode"></param>
+        public Money(int amount, MoneyCurrencyCode currencyCode = MoneyCurrencyCode.USD)
         {
             Amount = amount;
             CurrencyCode = currencyCode;
@@ -19,15 +24,20 @@ namespace SquareConnect.V1.Types
         /// The amount of money, in the smallest unit of the applicable currency. For US dollars, this value is in cents. This value is always an integer.
         /// </summary>
         [JsonProperty("account")]
-        public int Amount;
+        public int Amount { get; }
+
+
+        [JsonProperty("currency_code")]
+        internal string _currencyCode;
 
         /// <summary>
         /// The type of currency involved in the current payment. The currency code for US dollars is USD.
         /// </summary>
-        [JsonProperty("currency_code")]
-        internal string _currencyCode;
-
-        public MoneyCurrencyCode CurrencyCode => ObjectHelper.GetEnumFromDescription<MoneyCurrencyCode>(_currencyCode);
+        public MoneyCurrencyCode CurrencyCode
+        {
+            get { return ObjectHelper.GetEnumFromDescription<MoneyCurrencyCode>(_currencyCode); }
+            private set { _currencyCode = value.GetDescription(); }
+        }
 
         public override string ToString()
         {
