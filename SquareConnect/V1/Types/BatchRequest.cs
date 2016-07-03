@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -7,11 +9,14 @@ namespace SquareConnect.V1.Types
     /// </summary>
     public class BatchRequest
     {
+
+        [JsonProperty("method")]
+        internal string _method;
+
         /// <summary>
         /// The HTTP method of the request (DELETE, GET, POST, or PUT).
         /// </summary>
-        [JsonProperty("method")]
-        public string Method;
+        public RequestMethod Method => ObjectHelper.GetEnumFromDescription<RequestMethod>(_method);
 
         /// <summary>
         /// The path of the request's endpoint, relative to https://connect.squareup.com.

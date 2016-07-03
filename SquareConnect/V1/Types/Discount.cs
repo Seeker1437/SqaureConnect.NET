@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -42,11 +44,13 @@ namespace SquareConnect.V1.Types
         [JsonProperty("amount_money")]
         public Money AmountMoney;
 
+        [JsonProperty("discount_type")]
+        internal string _discountType;
+
         /// <summary>
         /// Indicates whether the discount is a <see cref="Enums.DiscountType.Fixed"/> value or entered at the time of sale.
         /// </summary>
-        [JsonProperty("discount_type")]
-        public string DiscountType;
+        public DiscountType DiscountType => ObjectHelper.GetEnumFromDescription<DiscountType>(_discountType);
 
         /// <summary>
         /// Indicates whether a mobile staff member needs to enter their PIN to apply the discount to a payment.

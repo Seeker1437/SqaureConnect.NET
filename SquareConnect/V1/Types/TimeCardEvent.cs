@@ -17,7 +17,9 @@ namespace SquareConnect.V1.Types
         /// The type of action performed on the timecard, such as CLOCKIN or API_CREATE.
         /// </summary>
         [JsonProperty("event_type")]
-        public string EventType;
+        internal string _eventType;
+
+        public
 
         /// <summary>
         /// The time the employee clocked in

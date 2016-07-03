@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -23,17 +25,19 @@ namespace SquareConnect.V1.Types
         /// The type of currency involved in the current payment. The currency code for US dollars is USD.
         /// </summary>
         [JsonProperty("currency_code")]
-        public string CurrencyCode;
+        internal string _currencyCode;
+
+        public MoneyCurrencyCode CurrencyCode => ObjectHelper.GetEnumFromDescription<MoneyCurrencyCode>(_currencyCode);
 
         public override string ToString()
         {
             // This is a rather crude currency formatter
             switch (CurrencyCode)
             {
-                case "USD":
-                case "CAD":
+                case MoneyCurrencyCode.USD:
+                case MoneyCurrencyCode.CAD:
                     return (Amount / 100).ToString("C");
-                case "JPY":
+                case MoneyCurrencyCode.JPY:
                     return "¥" + Amount;
                 default:
                     return Amount + " " + CurrencyCode;

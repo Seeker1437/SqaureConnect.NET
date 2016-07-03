@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -25,17 +27,23 @@ namespace SquareConnect.V1.Types
         [JsonProperty("rate")]
         public decimal Rate;
 
+        [JsonProperty("calculation_phase")]
+        internal string _calculationPhase;
+
         /// <summary>
         /// Forthcoming.
         /// </summary>
-        [JsonProperty("calculation_phase")]
-        public string CalculationPhase;
+        public FeeCalculationPhase CalculationPhase
+            => ObjectHelper.GetEnumFromDescription<FeeCalculationPhase>(_calculationPhase);
+
+        [JsonProperty("adjustment_type")]
+        internal string _adjustmentType;
 
         /// <summary>
         /// The type of adjustment the fee applies to a payment. Currently, this value is <see cref="Enums.FeeAdjustmentType.Tax"/> for all fees.
         /// </summary>
-        [JsonProperty("adjustment_type")]
-        public string AdjustmentType;
+        public FeeAdjustmentType AdjustmentType
+            => ObjectHelper.GetEnumFromDescription<FeeAdjustmentType>(_adjustmentType);
 
         /// <summary>
         /// If true, the fee applies to custom amounts entered into Square Register that are not associated with a particular item.
@@ -49,16 +57,20 @@ namespace SquareConnect.V1.Types
         [JsonProperty("enabled")]
         public bool Enabled;
 
+        [JsonProperty("inclusion_type")]
+        internal string _inclusionType;
+
         /// <summary>
         /// Whether the fee is <see cref="Enums.FeeInclusionType.Additive"/> or <see cref="Enums.FeeInclusionType.Inclusive"/>.
         /// </summary>
-        [JsonProperty("inclusion_type")]
-        public string InclusionType;
+        public FeeInclusionType InclusionType => ObjectHelper.GetEnumFromDescription<FeeInclusionType>(_inclusionType);
+
+        [JsonProperty("type")]
+        internal string _type;
 
         /// <summary>
         /// In countries with multiple classifications for sales taxes, indicates which classification the fee falls under. Currently relevant only to Canadian merchants.
         /// </summary>
-        [JsonProperty("type")]
-        public string Type;
+        public FeeType Type => ObjectHelper.GetEnumFromDescription<FeeType>(_type);
     }
 }

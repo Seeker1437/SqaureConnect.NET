@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -7,11 +9,13 @@ namespace SquareConnect.V1.Types
     /// </summary>
     public class SettlementEntry
     {
+        [JsonProperty("type")]
+        internal string _type;
+
         /// <summary>
         /// The type of activity this entry represents.
         /// </summary>
-        [JsonProperty("type")]
-        public string Type;
+        public SettlementEntryType Type => ObjectHelper.GetEnumFromDescription<SettlementEntryType>(_type);
 
         /// <summary>
         /// The payment associated with the settlement entry, if any.

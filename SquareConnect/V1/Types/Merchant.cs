@@ -1,4 +1,8 @@
 using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SquareConnect.V1.Types
 {
@@ -25,17 +29,23 @@ namespace SquareConnect.V1.Types
         [JsonProperty("email")]
         public string Email;
 
-        /// <summary>
-        /// Indicates whether the merchant account corresponds to a single-location account <see cref="Enums.MerchantAccountType.Location"/> or a business account <see cref="Enums.MerchantAccountType.Business"/>. This value is almost always <see cref="Enums.MerchantAccountType.Location"/>.
-        /// </summary>
+
         [JsonProperty("account_type")]
-        public string AccountType;
+        internal string _accountType;
+
+        /// <summary>
+        /// Indicates whether the merchant account corresponds to a single-location account <see cref="Enums.MerchantAccountType"/> or a business account <see cref="Enums.MerchantAccountType.Business"/>. This value is almost always <see cref="Enums.MerchantAccountType.Location"/>.
+        /// </summary>
+        public MerchantAccountType AccountType => ObjectHelper.GetEnumFromDescription<MerchantAccountType>(_accountType);
+
+        [JsonProperty("account_capabilities")]
+        internal string[] _accountCapabilities;
 
         /// <summary>
         /// Capabilities that are enabled for the merchant's Square account. Capabilities that are not listed in this array are not enabled for the account. Currently there is only one capability, <see cref="Enums.MerchantAccountCapability.CreditCardProcessing"/>
         /// </summary>
-        [JsonProperty("account_capabilities")]
-        public string[] AccountCapabilities;
+        public IEnumerable<MerchantAccountCapability> AccountCapabilities
+            => _accountCapabilities.Select(ObjectHelper.GetEnumFromDescription<MerchantAccountCapability>);
 
         /// <summary>
         /// The country associated with the merchant's account.
@@ -83,7 +93,7 @@ namespace SquareConnect.V1.Types
         /// Additional information for a single-location account specified by its associated business account, if it has one.
         /// </summary>
         [JsonProperty("location_details")]
-        public MarchantLocationDetails LocationDetails;
+        public MerchantLocationDetails LocationDetails;
 
         /// <summary>
         /// The URL of the merchant's online store.

@@ -52,7 +52,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SquareConnect\SquareConnect.csproj">
       <Project>{832da4da-1b96-42b6-a570-beb25dac8943}</Project>
-      <Name>SquareSharp</Name>
+      <Name>SquareConnect</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

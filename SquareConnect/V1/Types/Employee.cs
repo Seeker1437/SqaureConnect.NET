@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -46,14 +48,16 @@ namespace SquareConnect.V1.Types
         [JsonProperty("email")]
         public string Email { get; private set; }
 
+        [JsonProperty("status")]
+        internal string _status;
+
         /// <summary>
         /// Whether the employee is <see cref="Enums.EmployeeStatus.Active"/> or <see cref="Enums.EmployeeStatus.Inactive"/>. Inactive employees cannot sign in to Square Register.
         /// </summary>
         /// <remarks>
         /// Merchants update this field from the Square Dashboard. You cannot modify it with the Connect API.
         /// </remarks>
-        [JsonProperty("status")]
-        public string Status;
+        public EmployeeStatus Status => ObjectHelper.GetEnumFromDescription<EmployeeStatus>(_status);
 
         /// <summary>
         /// An ID the merchant can set to associate the employee with an entity in another system.

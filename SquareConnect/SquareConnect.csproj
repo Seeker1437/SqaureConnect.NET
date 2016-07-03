@@ -76,8 +76,8 @@
     <Compile Include="V1\Enums\ItemVariationPricingType.cs" />
     <Compile Include="V1\Enums\ItemVisibility.cs" />
     <Compile Include="V1\Enums\ListOrder.cs" />
-    <Compile Include="V1\Enums\MercahtAccountCapability.cs" />
-    <Compile Include="V1\Enums\MerchatAccountType.cs" />
+    <Compile Include="V1\Enums\MerchantAccountCapability.cs" />
+    <Compile Include="V1\Enums\MerchantAccountType.cs" />
     <Compile Include="V1\Enums\MerchatBusinessType.cs" />
     <Compile Include="V1\Enums\ModifiedListSelectionType.cs" />
     <Compile Include="V1\Enums\MoneyCurrencyCode.cs" />
@@ -117,7 +117,7 @@
     <Compile Include="V1\Types\Item.cs" />
     <Compile Include="V1\Types\ItemImage.cs" />
     <Compile Include="V1\Types\ItemVariation.cs" />
-    <Compile Include="V1\Types\MarchantLocationDetails.cs" />
+    <Compile Include="V1\Types\MerchantLocationDetails.cs" />
     <Compile Include="V1\Types\Merchant.cs" />
     <Compile Include="V1\Types\ModifierList.cs" />
     <Compile Include="V1\Types\ModifierOption.cs" />

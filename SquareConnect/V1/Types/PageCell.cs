@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -25,22 +27,27 @@ namespace SquareConnect.V1.Types
         [JsonProperty("colomn")]
         public int Colomn;
 
+        [JsonProperty("object_type")]
+        internal string _objectType;
+
         /// <summary>
         /// The type of entity represented in the cell (<see cref="Enums.PageCellType.Item"/>, <see cref="Enums.PageCellType.Discount"/>, <see cref="Enums.PageCellType.Category"/>, or <see cref="Enums.PageCellType.Placeholder"/>).
         /// </summary>
-        [JsonProperty("object_type")]
-        public string ObjectType;
+        public PageCellType ObjectType => ObjectHelper.GetEnumFromDescription<PageCellType>(_objectType);
 
         /// <summary>
-        /// The unique identifier of the entity represented in the cell. Not present for cells with an <see cref="ObjectType"/> of <see cref="Enums.PageCellPlaceholderType.Discount"/>
+        /// The unique identifier of the entity represented in the cell. Not present for cells with an <see cref="ObjectType"/> of <see cref="Discount"/>
         /// </summary>
         [JsonProperty("object_id")]
         public string ObjectId;
 
-        /// <summary>
-        /// For a cell with an <see cref="ObjectType"/> of <see cref="Enums.PageCellPlaceholderType.Discount"/>, this value indicates the cell's special behavior.
-        /// </summary>
         [JsonProperty("placeholder_type")]
-        public string PlaceholderType;
+        internal string _placeholderType;
+
+        /// <summary>
+        /// For a cell with an <see cref="ObjectType"/> of <see cref="Discount"/>, this value indicates the cell's special behavior.
+        /// </summary>
+        public PageCellPlaceholderType PlaceholderType
+            => ObjectHelper.GetEnumFromDescription<PageCellPlaceholderType>(_placeholderType);
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -17,7 +19,9 @@ namespace SquareConnect.V1.Types
         /// The settlement's current status.
         /// </summary>
         [JsonProperty("status")]
-        public string Status;
+        internal string _status;
+
+        public SettlementStatus Status => ObjectHelper.GetEnumFromDescription<SettlementStatus>(_status);
 
         /// <summary>
         /// The time when the settlement was submitted for deposit or withdrawal.

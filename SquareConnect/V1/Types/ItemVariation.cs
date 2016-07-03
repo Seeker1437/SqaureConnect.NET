@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -26,7 +28,7 @@ namespace SquareConnect.V1.Types
         /// The ID of the variation's associated item.
         /// </summary>
         [JsonProperty("item_id")]
-        public string ItemId { get; set; } // For now we don't support custom IDs
+        public string ItemId { get; set; }
 
         /// <summary>
         /// Indicates the variation's list position when displayed in Square Register and the merchant dashboard. If more than one variation for the same item has the same ordinal value, those variations are displayed in alphabetical order
@@ -37,11 +39,14 @@ namespace SquareConnect.V1.Types
         [JsonProperty("ordinal")]
         public int Ordinal { get; set; }
 
+        [JsonProperty("pricing_type")]
+        internal string _pricingType;
+
         /// <summary>
         /// Indicates whether the item variation's price is fixed or determined at the time of sale.
         /// </summary>
-        [JsonProperty("pricing_type")]
-        public string PricingType { get; set; }
+        public ItemVariationPricingType PricingType
+            => ObjectHelper.GetEnumFromDescription<ItemVariationPricingType>(_pricingType);
 
         /// <summary>
         /// The item variation's price, if any.
@@ -61,17 +66,20 @@ namespace SquareConnect.V1.Types
         [JsonProperty("track_inventory")]
         public bool TrackInventory { get; set; }
 
+        [JsonProperty("inventory_alert_type")]
+        internal string _inventoryAlertType;
+
         /// <summary>
         /// Indicates whether the item variation displays an alert when its inventory quantity is less than or equal to its <see cref="InventoryAlertThreshold"/>.
         /// </summary>
-        [JsonProperty("inventory_alert_type")]
-        public string InventoryAlertType { get; set; }
+        public InventoryAlertType InventoryAlertType
+            => ObjectHelper.GetEnumFromDescription<InventoryAlertType>(_inventoryAlertType);
 
         /// <summary>
         /// If the inventory quantity for the variation is less than or equal to this value and <see cref="InventoryAlertType"/> is <see cref="Enums.InventoryAlertType.LowQuantity"/>, the variation displays an alert in the merchant dashboard.
         /// </summary>
         [JsonProperty("inventory_alert_threshold")]
-        public string InventoryAlertThreshold { get; set; }
+        public int InventoryAlertThreshold { get; set; }
 
         /// <summary>
         /// Arbitrary metadata associated with the variation. Cannot exceed 255 characters.

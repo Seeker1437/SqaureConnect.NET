@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -29,7 +31,9 @@ namespace SquareConnect.V1.Types
         /// Whether the tax is an ADDITIVE tax or an INCLUSIVE tax.
         /// </summary>
         [JsonProperty("inclusion_type")]
-        public string InclusionType;
+        internal string _inclusionType;
+
+        public FeeInclusionType InclusionType => ObjectHelper.GetEnumFromDescription<FeeInclusionType>(_inclusionType);
 
         /// <summary>
         /// The ID of the tax, if available. Taxes applied in older versions of Square Register might not have an ID.

@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -13,11 +15,13 @@ namespace SquareConnect.V1.Types
         [JsonProperty("id")]
         public string Id;
 
+        [JsonProperty("type")]
+        internal string _type;
+
         /// <summary>
         /// The type of tender.
         /// </summary>
-        [JsonProperty("type")]
-        public string Type;
+        public TenderType Type => ObjectHelper.GetEnumFromDescription<TenderType>(_type);
 
         /// <summary>
         /// A human-readable description of the tender.
@@ -31,11 +35,13 @@ namespace SquareConnect.V1.Types
         [JsonProperty("receipt_url")]
         public string ReceiptUrl;
 
+        [JsonProperty("card_brand")]
+        internal string _cardBrand;
+
         /// <summary>
         /// The brand of credit card provided. Only present if the tender's type is CREDIT_CARD.
         /// </summary>
-        [JsonProperty("card_brand")]
-        public string CardBrand;
+        public TenderCardBrand CardBrand => ObjectHelper.GetEnumFromDescription<TenderCardBrand>(_cardBrand);
 
         /// <summary>
         /// The last four digits of the credit card provided. Only present if the tender's type is CREDIT_CARD.
@@ -43,11 +49,13 @@ namespace SquareConnect.V1.Types
         [JsonProperty("pan_suffix")]
         public string PanSuffix;
 
+        [JsonProperty("entry_method")]
+        public string _entryMethod;
+
         /// <summary>
         /// The method with which the tender was entered.
         /// </summary>
-        [JsonProperty("entry_method")]
-        public string EntryMethod;
+        public TenderEntryMethod EntryMethod => ObjectHelper.GetEnumFromDescription<TenderEntryMethod>(_entryMethod);
 
         /// <summary>
         /// Notes entered by the merchant about the tender at the time of payment, if any. Typically only present for tender with the type OTHER.

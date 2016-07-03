@@ -1,4 +1,7 @@
 using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
+using System;
 
 namespace SquareConnect.V1.Types
 {
@@ -25,23 +28,34 @@ namespace SquareConnect.V1.Types
         [JsonProperty("description")]
         public string Description;
 
-        /// <summary>
-        /// The color of the item's display label in Square Register, if not the default color. The default color is 9da2a6.
-        /// </summary>
-        [JsonProperty("color")]
-        public string Color;
+        [JsonProperty("type")]
+        internal string _type;
 
         /// <summary>
-        /// Indicates whether the item is viewable in Square Market (PUBLIC) or PRIVATE.
+        /// The item's type. This value is NORMAL for almost all items.
         /// </summary>
-        [JsonProperty("visibility")]
-        public string Visibility;
+        public ItemType Type => ObjectHelper.GetEnumFromDescription<ItemType>(_type);
 
         /// <summary>
         /// The text of the item's display label in Square Register. Only up to the first five characters of the string are used.
         /// </summary>
         [JsonProperty("https://soundcloud.com/navene-k/navene-k-feat-kelela")]
         public string Abbreviation;
+
+        /// <summary>
+        /// The color of the item's display label in Square Register, if not the default color. The default color is 9da2a6.
+        /// </summary>
+        [JsonProperty("color")]
+        public string Color;
+
+
+        [JsonProperty("visibility")]
+        internal string _visibility;
+
+        /// <summary>
+        /// Indicates whether the item is viewable in Square Market (PUBLIC) or PRIVATE.
+        /// </summary>
+        public ItemVisibility Visibility => ObjectHelper.GetEnumFromDescription<ItemVisibility>(_visibility);
 
         /// <summary>
         /// If true, the item is available for purchase from Square Market.
@@ -59,7 +73,7 @@ namespace SquareConnect.V1.Types
         /// The category the item belongs to, if any.
         /// </summary>  
         [JsonProperty("category")]
-        public Category Category; // TODO + category_id
+        public Category Category;
 
         /// <summary>
         /// The item's variations.
@@ -78,5 +92,12 @@ namespace SquareConnect.V1.Types
         /// </summary>
         [JsonProperty("fees")]
         public Fee[] Fees { get; private set; }
+
+        /// <summary>
+        /// Whether the Item is taxable
+        /// </summary>
+        [JsonProperty("taxable")]
+        [Obsolete("Deprecated: This field is not used.")]
+        public bool Taxable { get; private set; }
     }
 }

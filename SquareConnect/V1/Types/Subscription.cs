@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -29,13 +31,18 @@ namespace SquareConnect.V1.Types
         /// The subscription's status, such as active or canceled.
         /// </summary>
         [JsonProperty("status")]
-        public string Status;
+        internal string _status;
+
+        public SubscriptionStatus Status => ObjectHelper.GetEnumFromDescription<SubscriptionStatus>(_status);
 
         /// <summary>
         /// The method of payment used to pay the subscription's monthly fee.
         /// </summary>
         [JsonProperty("payment_method")]
-        public string PaymentMethod;
+        internal string _paymentMethod;
+
+        public SubscriptionPaymentMethod PaymentMethod
+            => ObjectHelper.GetEnumFromDescription<SubscriptionPaymentMethod>(_paymentMethod);
 
         /// <summary>
         /// The subscription's base monthly fee.

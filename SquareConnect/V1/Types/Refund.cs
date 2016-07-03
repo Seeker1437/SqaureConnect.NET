@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -7,11 +9,13 @@ namespace SquareConnect.V1.Types
     /// </summary>
     public class Refund
     {
+        [JsonProperty("type")]
+        public string _type;
+
         /// <summary>
         /// The type of refund (<see cref="SquareConnect.V1.Enums.RefundType.Full"/> or <see cref="SquareConnect.V1.Enums.RefundType.Partial"/>).
         /// </summary>
-        [JsonProperty("type")]
-        public string Type;
+        public RefundType Type => ObjectHelper.GetEnumFromDescription<RefundType>(_type);
 
         /// <summary>
         /// The merchant-specified reason for the refund.

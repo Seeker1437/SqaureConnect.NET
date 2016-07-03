@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SquareConnect.Tests")]
-[assembly: AssemblyCopyright("Copyright © 2016 Darnell Williams")]
+[assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("770d6eda-ce58-47c8-bba6-ae978ae47932")]
+[assembly: Guid("41afd806-1977-42f8-b24c-edd8564e2321")]
 
 // Version information for an assembly consists of the following four values:
 //

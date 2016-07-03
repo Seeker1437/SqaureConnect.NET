@@ -1,4 +1,6 @@
 using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -18,6 +20,17 @@ namespace SquareConnect.V1.Types
         /// </summary>
         [JsonProperty("quantity")]
         public decimal Quantity;
+
+
+        [JsonProperty("itemization_type")]
+        internal string _itemizationType;
+
+        /// <summary>
+        /// The type of purchase that the itemization represents, such as an ITEM or CUSTOM_AMOUNT
+        /// </summary>
+        public PaymentItemizationType ItemizationType
+            => ObjectHelper.GetEnumFromDescription<PaymentItemizationType>(_itemizationType);
+
 
         /// <summary>
         /// Details of the item, including its unique identifier and the identifier of the item variation purchased.

@@ -1,4 +1,8 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SquareConnect.V1.Types
 {
@@ -19,11 +23,14 @@ namespace SquareConnect.V1.Types
         [JsonProperty("name")]
         public string Name;
 
+        [JsonProperty("permissions")]
+        internal string[] _permissions;
+
         /// <summary>
         /// The permissions that the role has been granted.
         /// </summary>
-        [JsonProperty("permissions")]
-        public string[] Permissions;
+        public IEnumerable<EmployeeRolePermission> Permissions
+            => _permissions.Select(ObjectHelper.GetEnumFromDescription<EmployeeRolePermission>);
 
         /// <summary>
         /// If <c>true</c>, employees with this role have all permissions, regardless of the values indicated in permissions.

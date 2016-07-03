@@ -15,5 +15,19 @@ namespace SquareConnect.Util
                    where property.PropertyType == StringType
                    select new KeyValuePair<string, string>(property.Name, property.GetValue(obj, null) as string);
         }
+
+        public static T GetEnumFromDescription<T>(string value) where T : struct, IConvertible
+        {
+            if (!typeof(T).IsEnum)
+            {
+                throw new ArgumentException("T must be an enumerated type");
+            }
+
+            var enumValue = Enum.GetValues(typeof(T))
+                        .Cast<T>()
+                        .FirstOrDefault(x => x.GetDescription() == value);
+
+            return enumValue;
+        }
     }
 }

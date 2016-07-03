@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -19,11 +21,13 @@ namespace SquareConnect.V1.Types
         [JsonProperty("employee_id")]
         public string EmployeeId;
 
+        [JsonProperty("event_type")]
+        internal string _eventType;
+
         /// <summary>
         /// The type of event that occurred
         /// </summary>
-        [JsonProperty("event_type")]
-        public string EventType;
+        public CashDrawerEventType EventType => ObjectHelper.GetEnumFromDescription<CashDrawerEventType>(_eventType);
 
         /// <summary>
         /// The amount of money that was added to or removed from the cash drawer because of the event. This value can be positive (for added money) or negative (for removed money).

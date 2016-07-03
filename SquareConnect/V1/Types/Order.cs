@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -13,11 +15,14 @@ namespace SquareConnect.V1.Types
         [JsonProperty("id")]
         public string Id;
 
+
+        [JsonProperty("state")]
+        internal string _state;
+
         /// <summary>
         /// The order's current state, such as <see cref="Enums.OrderState.Open"/> or <see cref="Enums.OrderState.Completed"/>.
         /// </summary>
-        [JsonProperty("state")]
-        public string State;
+        public OrderState State => ObjectHelper.GetEnumFromDescription<OrderState>(_state);
 
         /// <summary>
         /// The email address of the order's buyer.

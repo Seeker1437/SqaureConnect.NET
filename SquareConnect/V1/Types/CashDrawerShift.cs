@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using SquareConnect.Util;
+using SquareConnect.V1.Enums;
 
 namespace SquareConnect.V1.Types
 {
@@ -13,11 +15,14 @@ namespace SquareConnect.V1.Types
         [JsonProperty("id")]
         public string Id;
 
+        [JsonProperty("cash_drawer_state")]
+        internal string _cashDrawerState;
+
         /// <summary>
         /// The shift's current state
         /// </summary>
-        [JsonProperty("cash_drawer_state")]
-        public string CashDrawerState;
+        public CashDrawerShiftState CashDrawerState
+            => ObjectHelper.GetEnumFromDescription<CashDrawerShiftState>(_cashDrawerState);
 
         /// <summary>
         /// The time when the shift began
