@@ -1,13 +1,25 @@
 ﻿using System;
 using System.Dynamic;
 using System.Threading.Tasks;
+using SquareConnect.Objects.V1;
 using SquareConnect.Rest;
-using SquareConnect.V1.Types;
 
 namespace SquareConnect.Client
 {
+    /// <summary>
+    /// Represents a connection to the Sqaure Connect API
+    /// </summary>
     public partial class SquareClient
     {
+        /// <summary>
+        /// Creates an employee for a business.
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="email"></param>
+        /// <param name="externalId"></param>
+        /// <param name="roleIds"></param>
+        /// <returns></returns>
         public async Task<Employee> CreateEmployeeAsync(string firstName, string lastName, string email = null,
             string externalId = null, string[] roleIds = null)
         {
@@ -77,6 +89,10 @@ namespace SquareConnect.Client
         }
 
         //TODO: Determine how I should handle the requests that have parameter limitations
+        /// <summary>
+        /// Provides summary information for all of a business's employees.
+        /// </summary>
+        /// <returns></returns>
         public async Task<Employee[]> GetEmployeeListAsync()
         {
             await Task.Delay(10);

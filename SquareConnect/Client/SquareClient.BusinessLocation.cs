@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using SquareConnect.Objects.V1;
 using SquareConnect.Rest;
-using SquareConnect.V1.Types;
 
 namespace SquareConnect.Client
 {

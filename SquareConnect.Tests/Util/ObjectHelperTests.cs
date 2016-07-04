@@ -1,8 +1,8 @@
-﻿using SquareConnect.Util;
-using SquareConnect.V1.Enums;
+﻿using SquareConnect.Objects.V1;
+using SquareConnect.Util;
 using Xunit;
 
-namespace SquareConnect.Tests
+namespace SquareConnect.Tests.Util
 {
     public class ObjectHelperTests
     {
